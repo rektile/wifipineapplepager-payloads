@@ -1,7 +1,7 @@
 #!/bin/bash
-# Title: Example Handshake Capture Alert
-# Description: Alert human readable summary
-# Author: Hak5Darren Modified
+# Title: SSID Handshake Capture Alert
+# Description: Alert human readable summary plus SSID
+# Author: RootJunky
 # Version: 1
 
 PCAP="$_ALERT_HANDSHAKE_PCAP_PATH"
