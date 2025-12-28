@@ -16,14 +16,17 @@
 
 **2. Select Interface** The tool scans for all available network interfaces, prioritizing the most useful ones at the top of the list. Enter the ID of the interface you wish to spoof.
 ![Interface List](screens/Capture02.PNG)
+
 ![Interface Selection](screens/Capture03.PNG)
 
 **3. Select Environment** Choose the category that matches your target environment. (0: Restore, 1-5: Spoof Profiles).
 ![Environment List](screens/Capture04.PNG)
+
 ![Category Selection](screens/Capture05.PNG)
 
 **4. Select Device Profile** Select the specific device to emulate. The script generates a valid MAC address using that vendor's OUI and a randomized suffix.
 ![Profile List](screens/Capture06.PNG)
+
 ![Profile Selection](screens/Capture07.PNG)
 
 **5. Confirm Action** Review your selection. The screen displays the target Interface, the new Hostname, and the new MAC address for confirmation.
@@ -36,3 +39,4 @@
 
 * **Persistence:** All changes are volatile. Rebooting the device will automatically reset the MAC address to its hardware default.
 * **Connection Drop:** Running this payload while connected to a network will drop the connection. Reconnection is required after the spoof is applied.
+
