@@ -2,7 +2,7 @@
 # Title: Curly - Web Recon & Vuln Scanner
 # Description: Curl-based web reconnaissance and vulnerability testing for pentesting and bug bounty hunting
 # Author: curtthecoder
-# Version: 3.0
+# Version: 3.1
 
 # === CONFIG ===
 LOOTDIR=/root/loot/curly
@@ -83,10 +83,19 @@ follow_redirects() {
     if [ -n "$final_url" ]; then
         # Update to final destination
         LOG "Redirect detected: $final_url"
-        TARGET_URL="$final_url"
-        parse_url "$TARGET_URL"
-        TARGET_URL="${TARGET_PROTO}://${TARGET_HOST}"
-        LOG "Updated target: $TARGET_URL"
+
+        # Check if redirect is relative (starts with /)
+        if [[ "$final_url" =~ ^/ ]]; then
+            # Relative redirect - prepend original protocol and host
+            TARGET_URL="${TARGET_PROTO}://${TARGET_HOST}${final_url}"
+            LOG "Relative redirect resolved to: $TARGET_URL"
+        else
+            # Absolute redirect
+            TARGET_URL="$final_url"
+            parse_url "$TARGET_URL"
+            TARGET_URL="${TARGET_PROTO}://${TARGET_HOST}"
+            LOG "Updated target: $TARGET_URL"
+        fi
     fi
 }
 
